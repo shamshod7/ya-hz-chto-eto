@@ -61,7 +61,7 @@ def dd(m):
     kb.add(*buttons1)
     kb.add(*buttons2)
     kb.add(*buttons3)
-    kb.add(types.InlineKeyboardButton(text='Окончить игру', callback_data='endgame'))
+    kb.add(types.InlineKeyboardButton(text='Окончить игру', callback_data='endgame '+str(number)))
     polls.update({number:{
         'users':{},
         'dicks':dicks,
