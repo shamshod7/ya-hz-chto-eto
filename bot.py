@@ -124,10 +124,10 @@ def inline(call):
 def editmsg(game):
     text=''
     for ids in game['users']:
-        if game['users']['dick']==True:
-            text+=game['users']['name']+': 🍆нашёл член\n'
+        if game['users'][ids]['dick']==True:
+            text+=game['users'][ids]['name']+': 🍆нашёл член\n'
         else:
-            text+=game['users']['name']+': 💨открыл пустую коробку\n'
+            text+=game['users'][ids]['name']+': 💨открыл пустую коробку\n'
     return text
     
     
