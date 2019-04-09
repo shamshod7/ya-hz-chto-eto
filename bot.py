@@ -114,8 +114,8 @@ def inline(call):
         medit('Игра окончена юзером '+call.from_user.first_name+'! Результаты:\n'+result, call.message.chat.id, call.message.message_id, reply_markup=kb2)
     else:
         bot.answer_callback_query(call.id, 'Вы уже походили!')
-  except:
-    pass
+  except Exception as e:
+    bot.send_message(441399484, traceback.format_exc())
     
 def editmsg(game):
     text=''
