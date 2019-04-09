@@ -134,9 +134,9 @@ def editmsg(game, end=False):
         text=''
     for ids in game['users']:
         if game['users'][ids]['dick']==True:
-            text+=game['users'][ids]['name']+': 🍆нашёл член\n'
+            text+=game['users'][ids]['name']+': 🍆нашёл(ла) член\n'
         else:
-            text+=game['users'][ids]['name']+': 💨открыл пустую коробку\n'
+            text+=game['users'][ids]['name']+': 💨открыл(а) пустую коробку\n'
     return text
     
     
