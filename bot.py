@@ -74,7 +74,7 @@ def dd(m):
 def inline(call):
   try:
     user=call.from_user
-    game=polls[call.data.split(' ')[1]]
+    game=polls[int(call.data.split(' ')[1])]
     if user.id not in game['users'] and call.data!='xyi':
         if 'penis' in call.data:
             dick=True
