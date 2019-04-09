@@ -58,12 +58,12 @@ def dd(m):
     kb.add(*buttons2)
     kb.add(*buttons3)
     kb.add(types.InlineKeyboardButton(text='Окончить игру', callback_data='endgame'))
-    polls.update(number:{
+    polls.update({number:{
         'users':{},
         'dicks':dicks,
         'kb':kb
         
-    }
+    }}
                 )
     bot.send_message(m.chat.id, text, reply_markup=kb)
     number+=1
