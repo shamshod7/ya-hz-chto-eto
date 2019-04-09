@@ -97,7 +97,10 @@ def inline(call):
             
             medit(editmsg(game), call.message.chat.id, call.message.message_id, reply_markup=game['kb'])
         
-        elif 'endgame' in call.data:
+        elif 'endgame' not in call.data:
+            bot.answer_callback_query(call.id, 'Вы уже походили!')
+        
+        if 'endgame' in call.data:
             kb2=types.InlineKeyboardMarkup()
             buttons1=[]
             buttons2=[]
@@ -120,13 +123,12 @@ def inline(call):
             kb2.add(*buttons3)
             result=editmsg(game)
             medit('Игра окончена юзером '+call.from_user.first_name+'! Результаты:\n'+result, call.message.chat.id, call.message.message_id, reply_markup=kb2)
-        else:
-            bot.answer_callback_query(call.id, 'Вы уже походили!')
+
   except Exception as e:
     bot.send_message(441399484, traceback.format_exc())
     
 def editmsg(game):
-    text=''
+    text='Угадайте, в какой коробке хуй.\n\n'
     for ids in game['users']:
         if game['users'][ids]['dick']==True:
             text+=game['users'][ids]['name']+': 🍆нашёл член\n'
