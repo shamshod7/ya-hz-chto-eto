@@ -47,7 +47,7 @@ def dd(m):
         i+=1
     i=1
     while i<=9:
-        randoms=random.randint(1,1000)
+        randoms=random.randint(1,10000000)
         if i in dicks:
             if random.randint(1,100)!=1:
                 callb='penis'
