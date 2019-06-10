@@ -95,7 +95,7 @@ def inline(call):
                 dick=True
                 if 'gold' in call.data:
                     golddick=True
-                    text='⚱🍆|Ура! Вы нашли золотой пенис!'
+                    text='🍌|Ура! Вы нашли золотой пенис!'
                 else:
                     text='🍆|Ура! Вы выбрали ящик с членом!'
                 bot.answer_callback_query(call.id, '🍆|Ура! Вы выбрали ящик с членом!', show_alert=True)
@@ -123,7 +123,7 @@ def inline(call):
             if i in game['dicks']:
                 emoj='🍆'
                 if i in game['golddicks']:
-                    emoj='⚱🍆'
+                    emoj='🍌'
             else:
                 emoj='💨'
             if i<=3:
@@ -149,7 +149,7 @@ def editmsg(game, end=False):
         text=''
     for ids in game['users']:
         if game['users'][ids]['golddick']==True:
-            text+=game['users'][ids]['name']+': ⚱🍆нашёл(ла) ЗОЛОТОЙ член!\n'
+            text+=game['users'][ids]['name']+': 🍌нашёл(ла) ЗОЛОТОЙ член!\n'
         
         elif game['users'][ids]['dick']==True:
             text+=game['users'][ids]['name']+': 🍆нашёл(ла) член\n'
