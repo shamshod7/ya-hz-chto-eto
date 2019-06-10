@@ -35,20 +35,25 @@ def dd(m):
     buttons1=[]
     buttons2=[]
     buttons3=[]
-    amount=random.randint(1,9)
+    amount=random.randint(1,8)
     i=0
     dicks=[]
+    golddicks=[]
     while i<amount:
-        x=random.randint(1,9)
+        x=random.randint(1,8)
         while x in dicks:
-            x=random.randint(1,9)
+            x=random.randint(1,8)
         dicks.append(x)
         i+=1
     i=1
     while i<=9:
         randoms=random.randint(1,1000)
         if i in dicks:
-            callb='penis'
+            if random.randint(1,100)!=1:
+                callb='penis'
+            else:
+                callb='goldpenis'
+                golddicks.append(i)
         else:
             callb=str(random.randint(1,100))
         if i<=3:
@@ -65,7 +70,8 @@ def dd(m):
     polls.update({number:{
         'users':{},
         'dicks':dicks,
-        'kb':kb
+        'kb':kb,
+        'golddicks':golddicks
         
     }}
                 )
@@ -86,13 +92,20 @@ def inline(call):
         if user.id not in game['users'] and call.data!='xyi':
             if 'penis' in call.data:
                 dick=True
+                golddick=False
+                if 'gold' in call.data:
+                    golddick=True
+                    text='⚱🍆|Ура! Вы нашли золотой пенис!'
+                else:
+                    text='🍆|Ура! Вы выбрали ящик с членом!'
                 bot.answer_callback_query(call.id, '🍆|Ура! Вы выбрали ящик с членом!', show_alert=True)
             else:
                 dick=False
                 bot.answer_callback_query(call.id, '💨|О нет! Вы выбрали ящик без члена!', show_alert=True)
             
             game['users'].update({user.id:{'name':call.from_user.first_name,
-                                          'dick':dick}})
+                                          'dick':dick,
+                                          'golddick':golddick}})
             kb=types.InlineKeyboardMarkup(3)
             
             medit(editmsg(game), call.message.chat.id, call.message.message_id, reply_markup=game['kb'])
@@ -109,6 +122,8 @@ def inline(call):
         while i<=9:
             if i in game['dicks']:
                 emoj='🍆'
+                if i in game['golddicks']:
+                    emoj='⚱🍆'
             else:
                 emoj='💨'
             if i<=3:
@@ -133,7 +148,10 @@ def editmsg(game, end=False):
     else:
         text=''
     for ids in game['users']:
-        if game['users'][ids]['dick']==True:
+        if game['users'][ids]['golddick']==True:
+            text+=game['users'][ids]['name']+': ⚱🍆нашёл(ла) ЗОЛОТОЙ член!\n'
+        
+        elif game['users'][ids]['dick']==True:
             text+=game['users'][ids]['name']+': 🍆нашёл(ла) член\n'
         else:
             text+=game['users'][ids]['name']+': 💨открыл(а) пустую коробку\n'
