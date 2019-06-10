@@ -90,9 +90,9 @@ def inline(call):
         game=None
     if game!=None:
         if user.id not in game['users'] and call.data!='xyi':
+            golddick=False
             if 'penis' in call.data:
                 dick=True
-                golddick=False
                 if 'gold' in call.data:
                     golddick=True
                     text='⚱🍆|Ура! Вы нашли золотой пенис!'
