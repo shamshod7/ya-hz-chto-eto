@@ -98,7 +98,7 @@ def inline(call):
                     text='🍌|Ура! Вы нашли золотой пенис!'
                 else:
                     text='🍆|Ура! Вы выбрали ящик с членом!'
-                bot.answer_callback_query(call.id, '🍆|Ура! Вы выбрали ящик с членом!', show_alert=True)
+                bot.answer_callback_query(call.id, text, show_alert=True)
             else:
                 dick=False
                 bot.answer_callback_query(call.id, '💨|О нет! Вы выбрали ящик без члена!', show_alert=True)
