@@ -137,14 +137,14 @@ def inline(call):
         kb2.add(*buttons2)
         kb2.add(*buttons3)
         result=editmsg(game, True)
-        medit('Игра окончена юзером '+call.from_user.first_name+'! Результаты:\n'+result, call.message.chat.id, call.message.message_id, reply_markup=kb2)
+        medit('O`yin '+call.from_user.first_name+'tomonidan to`xtatildi! Natijalar:\n'+result, call.message.chat.id, call.message.message_id, reply_markup=kb2)
 
   except Exception as e:
     bot.send_message(441399484, traceback.format_exc())
     
 def editmsg(game, end=False):
     if end==False:
-        text='Угадайте, в какой коробке хуй.\n\n'
+        text='Qaysi qutiga "🔮Makon Toshi".\n\n'
     else:
         text=''
     for ids in game['users']:
