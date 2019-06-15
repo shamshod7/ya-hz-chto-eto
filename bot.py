@@ -30,7 +30,7 @@ def medit(message_text,chat_id, message_id,reply_markup=None,parse_mode=None):
 @bot.message_handler(commands=['dick'])
 def dd(m):
     global number
-    text='"Cheksizlik Toshi" qaysi karobkaga yashirilgan? .'
+    text='"💎Cheksizlik Toshi" qaysi karobkaga yashirilgan? .'
     kb=types.InlineKeyboardMarkup(3)
     buttons1=[]
     buttons2=[]
@@ -95,13 +95,13 @@ def inline(call):
                 dick=True
                 if 'gold' in call.data:
                     golddick=True
-                    text='🔮|G`alaba! Siz "Makon Toshi"ni topdingiz!'
+                    text='💎|G`alaba! Siz "Makon Toshi"ni topdingiz!'
                 else:
-                    text='🃏|G`alaba! Siz "Casino bileti"ni topdingiz!'
+                    text='🎴|G`alaba! Siz "Casino bileti"ni topdingiz!'
                 bot.answer_callback_query(call.id, text, show_alert=True)
             else:
                 dick=False
-                bot.answer_callback_query(call.id, '💨|Oo yo`q! Siz bo`m bo`sh qutini tanladiz!', show_alert=True)
+                bot.answer_callback_query(call.id, '🌀|Oo yo`q! Siz bo`m bo`sh qutini tanladiz!', show_alert=True)
             
             game['users'].update({user.id:{'name':call.from_user.first_name,
                                           'dick':dick,
@@ -121,11 +121,11 @@ def inline(call):
         i=1
         while i<=9:
             if i in game['dicks']:
-                emoj='🃏'
+                emoj='🎴'
                 if i in game['golddicks']:
-                    emoj='🔮'
+                    emoj='💎'
             else:
-                emoj='💨'
+                emoj='🌀'
             if i<=3:
                 buttons1.append(types.InlineKeyboardButton(text=emoj, callback_data='xyi'))
             elif i<=6:
@@ -137,22 +137,22 @@ def inline(call):
         kb2.add(*buttons2)
         kb2.add(*buttons3)
         result=editmsg(game, True)
-        medit('O`yin '+call.from_user.first_name+'tomonidan to`xtatildi! Natijalar:\n'+result, call.message.chat.id, call.message.message_id, reply_markup=kb2)
+        medit('O`yin '+call.from_user.first_name+' tomonidan to`xtatildi! 📊Natijalar:\n'+result, call.message.chat.id, call.message.message_id, reply_markup=kb2)
 
   except Exception as e:
     bot.send_message(441399484, traceback.format_exc())
     
 def editmsg(game, end=False):
     if end==False:
-        text='Qaysi qutiga "🔮Makon Toshi".\n\n'
+        text='Qaysi qutida "💎Makon Toshi".\n\n'
     else:
         text=''
     for ids in game['users']:
         if game['users'][ids]['golddick']==True:
-            text+=game['users'][ids]['name']+': 🔮"Makon Toshi"ni topdi!\n'
+            text+=game['users'][ids]['name']+': 💎"Makon Toshi"ni topdi!\n'
         
         elif game['users'][ids]['dick']==True:
-            text+=game['users'][ids]['name']+': 🃏"Casino bileti"ni topdi\n'
+            text+=game['users'][ids]['name']+': 🎴"Casino bileti"ni topdi\n'
         else:
             text+=game['users'][ids]['name']+': 💨bo`m bo`sh qutini tanladi\n'
     return text
