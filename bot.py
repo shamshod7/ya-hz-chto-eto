@@ -30,7 +30,7 @@ def medit(message_text,chat_id, message_id,reply_markup=None,parse_mode=None):
 @bot.message_handler(commands=['dick'])
 def dd(m):
     global number
-    text='"💎Cheksizlik Toshi" qaysi karobkaga yashirilgan? .'
+    text='"💎Cheksizlik Toshi" qaysi qutiga yashirilgan? .'
     kb=types.InlineKeyboardMarkup(3)
     buttons1=[]
     buttons2=[]
@@ -49,7 +49,7 @@ def dd(m):
     while i<=9:
         randoms=random.randint(1,10000000)
         if i in dicks:
-            if random.randint(1,100)!=1:
+            if random.randint(1,10)!=1:
                 callb='penis'
             else:
                 callb='goldpenis'
