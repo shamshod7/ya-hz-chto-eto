@@ -30,7 +30,7 @@ def medit(message_text,chat_id, message_id,reply_markup=None,parse_mode=None):
 @bot.message_handler(commands=['dick'])
 def dd(m):
     global number
-    text='Угадайте, в какой коробке хуй.'
+    text='"Cheksizlik Toshi" qaysi karobkaga yashirilgan? .'
     kb=types.InlineKeyboardMarkup(3)
     buttons1=[]
     buttons2=[]
@@ -66,7 +66,7 @@ def dd(m):
     kb.add(*buttons1)
     kb.add(*buttons2)
     kb.add(*buttons3)
-    kb.add(types.InlineKeyboardButton(text='Окончить игру', callback_data='endgame '+str(number)))
+    kb.add(types.InlineKeyboardButton(text='O`yinni tugatish', callback_data='endgame '+str(number)))
     polls.update({number:{
         'users':{},
         'dicks':dicks,
@@ -95,13 +95,13 @@ def inline(call):
                 dick=True
                 if 'gold' in call.data:
                     golddick=True
-                    text='🍌|Ура! Вы нашли золотой пенис!'
+                    text='🔮|G`alaba! Siz "Makon Toshi"ni topdingiz!'
                 else:
-                    text='🍆|Ура! Вы выбрали ящик с членом!'
+                    text='🃏|G`alaba! Siz "Casino bileti"ni topdingiz!'
                 bot.answer_callback_query(call.id, text, show_alert=True)
             else:
                 dick=False
-                bot.answer_callback_query(call.id, '💨|О нет! Вы выбрали ящик без члена!', show_alert=True)
+                bot.answer_callback_query(call.id, '💨|Oo yo`q! Siz bo`m bo`sh qutini tanladiz!', show_alert=True)
             
             game['users'].update({user.id:{'name':call.from_user.first_name,
                                           'dick':dick,
@@ -111,7 +111,7 @@ def inline(call):
             medit(editmsg(game), call.message.chat.id, call.message.message_id, reply_markup=game['kb'])
         
         elif 'endgame' not in call.data:
-            bot.answer_callback_query(call.id, 'Вы уже походили!')
+            bot.answer_callback_query(call.id, 'Siz tanlab bo`lidiz!')
         
     if 'endgame' in call.data:
         kb2=types.InlineKeyboardMarkup()
@@ -121,9 +121,9 @@ def inline(call):
         i=1
         while i<=9:
             if i in game['dicks']:
-                emoj='🍆'
+                emoj='🃏'
                 if i in game['golddicks']:
-                    emoj='🍌'
+                    emoj='🔮'
             else:
                 emoj='💨'
             if i<=3:
@@ -149,12 +149,12 @@ def editmsg(game, end=False):
         text=''
     for ids in game['users']:
         if game['users'][ids]['golddick']==True:
-            text+=game['users'][ids]['name']+': 🍌нашёл(ла) ЗОЛОТОЙ член!\n'
+            text+=game['users'][ids]['name']+': 🔮"Makon Toshi"ni topdi!\n'
         
         elif game['users'][ids]['dick']==True:
-            text+=game['users'][ids]['name']+': 🍆нашёл(ла) член\n'
+            text+=game['users'][ids]['name']+': 🃏"Casino bileti"ni topdi\n'
         else:
-            text+=game['users'][ids]['name']+': 💨открыл(а) пустую коробку\n'
+            text+=game['users'][ids]['name']+': 💨bo`m bo`sh qutini tanladi\n'
     return text
     
     
