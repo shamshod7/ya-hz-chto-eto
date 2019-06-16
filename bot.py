@@ -49,7 +49,7 @@ def dd(m):
     while i<=9:
         randoms=random.randint(1,10000000)
         if i in dicks:
-            if random.randint(1,2)!=1:
+            if random.randint(1,3)!=1:
                 callb='penis'
             else:
                 callb='goldpenis'
